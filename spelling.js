@@ -22,9 +22,7 @@ String.prototype.capitalize = function() {
 var replaceWord = function(word) {
 	// remove punctuation (only 1 character right now) at beginning and end of word
 	var orig = word.replace(/\b[.!-,;]/, "");
-	// orig = orig.replace(/[.]/g, "");
 	var input = orig;
-	// test for certain words
 	var alreadyChanged = false;
 	// test for certain words
 	for (var i in replacements) {
@@ -39,6 +37,7 @@ var replaceWord = function(word) {
 			break;
 		}
 	}
+	// if not a replacement word, use regex to change the word
 	if (!alreadyChanged) {
 		var isUnicodeApostrophe = false;
 		// replace curved apostrophe with straight one
