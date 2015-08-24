@@ -86,12 +86,14 @@ var processNodeText = function(textNode) {
 		}
 	}
 	var nodeValue = textNode.nodeValue;
-	var wordArray = nodeValue.split(/\s/g);
-	var editedWords = '';
+	if (!/[^\n\s]/.test(nodeValue)) {
+		return;
+	}
+	var wordArray = nodeValue.split(/\s+/);
 	for (var a in wordArray) {
 		wordArray[a] = replaceWord(wordArray[a]);
-		editedWords += wordArray[a] + ' ';
 	}
+	var editedWords = wordArray.join(' ');
 	textNode.nodeValue = editedWords;
 };
 
