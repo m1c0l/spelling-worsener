@@ -47,7 +47,7 @@ var replaceWord = function(word) {
 			input = input.replace('\u2019', "'");
 			isUnicodeApostrophe = true;
 		}
-		
+
 		// s at end of string
 		if (/[^s/'/]s$/.test(input)) {
 			input = input.replace(/s$/, 'z');
@@ -55,12 +55,12 @@ var replaceWord = function(word) {
 		else {
 			input = input.replace(/ex/g, 'x');
 		}
-		
+
 		// put apostrophe back
 		if (isUnicodeApostrophe) {
 			input = input.replace("'", '\u2019');
 		}
-		
+
 		// if word is long enough
 		if (input.length >= 8) {
 			// replace the a's and o's if they don't precede vowels
@@ -101,7 +101,7 @@ var processNodeText = function(textNode) {
 
 var processBody = (function() {
 	var textNode, nodeIter = document.createNodeIterator(document.body, NodeFilter.SHOW_TEXT);
-    while ((textNode = nodeIter.nextNode())) {
-        processNodeText(textNode);
-    }
+	while ((textNode = nodeIter.nextNode())) {
+		processNodeText(textNode);
+	}
 })();
