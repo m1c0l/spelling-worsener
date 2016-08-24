@@ -3,6 +3,9 @@ var replacements = {
 	"this": "dis",
 	"that": "dat",
 	"the": "ze",
+	"those": "doze",
+	"its": "it's",
+	"it's": "its",
 	"is": "are",
 	"are": "is",
 	"have": "has",
@@ -10,8 +13,17 @@ var replacements = {
 	"you're": "your",
 	"your": "you're",
 	"there": "they're",
+	"there's": "theirs",
 	"they're": "their",
-	"their": "they're"
+	"their": "they're",
+	"theirs": "there's",
+	"through": "though",
+	"though": "thought",
+	"thought": "though",
+	"lose": "loose",
+	"loose": "lose",
+	"accept": "except",
+	"except": "accept"
 };
 
 String.prototype.capitalize = function() {
