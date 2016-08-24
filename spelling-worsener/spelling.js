@@ -1,22 +1,22 @@
 // Test for first word, replace with second
-var replacements = [
-	["this", "dis"],
-	["that", "dat"],
-	["the", "ze"],
-	["is", "are"],
-	["are", "is"],
-	["have", "has"],
-	["has", "have"],
-	["you're", "your"],
-	["your", "you're"],
-	["there", "they're"],
-	["they're", "their"],
-	["their", "they're"]
-];
+var replacements = {
+	"this": "dis",
+	"that": "dat",
+	"the": "ze",
+	"is": "are",
+	"are": "is",
+	"have": "has",
+	"has": "have",
+	"you're": "your",
+	"your": "you're",
+	"there": "they're",
+	"they're": "their",
+	"their": "they're"
+};
 
 String.prototype.capitalize = function() {
-	// only for one word: make non-whitespace character at beginning uppercase
-	return this.replace(/^\S/, function(letter) { return letter.toUpperCase(); });
+	// only for one word: make first character uppercase
+	return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
 var replaceWord = function(word) {
@@ -24,20 +24,22 @@ var replaceWord = function(word) {
 	var orig = word.replace(/\b[.!-,;]/, "");
 	var input = orig;
 	var alreadyChanged = false;
-	// test for certain words
-	for (var i in replacements) {
-		if (input == replacements[i][0]) {
-			input = replacements[i][1];
-			alreadyChanged = true;
-			break;
+	// test for certain words, replace if matched
+	var lowercaseInput = input.toLowerCase();
+	if (typeof replacements[lowercaseInput] !== "undefined") {
+		var newInput = replacements[lowercaseInput];
+		alreadyChanged = true;
+		// if input was all caps, also make replaced input all caps
+		if (input == input.toUpperCase()) {
+			newInput = newInput.toUpperCase();
 		}
-		else if (input == replacements[i][0].capitalize()) {
-			input = replacements[i][1].capitalize();
-			alreadyChanged = true;
-			break;
+		// if input has only first letter capitalized, capitalize new input's first letter
+		else if (input[0] == input[0].toUpperCase()) {
+			newInput = newInput.capitalize();
 		}
+		input = newInput;
 	}
-	// if not a replacement word, use regex to change the word
+	// if not a replacement word, use regex to change the word if matches certain conditions
 	if (!alreadyChanged) {
 		var isUnicodeApostrophe = false;
 		// replace curved apostrophe with straight one
