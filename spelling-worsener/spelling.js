@@ -26,11 +26,6 @@ var replacements = {
 	"except": "accept"
 };
 
-String.prototype.capitalize = function() {
-	// only for one word: make first character uppercase
-	return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
 var replaceWord = function(word) {
 	// remove punctuation (only 1 character right now) at beginning and end of word
 	var orig = word.replace(/\b[.!-,;]/, "");
@@ -47,7 +42,7 @@ var replaceWord = function(word) {
 		}
 		// if input has only first letter capitalized, capitalize new input's first letter
 		else if (input[0] == input[0].toUpperCase()) {
-			newInput = newInput.capitalize();
+			newInput = newInput[0] + newInput.slice(1);
 		}
 		input = newInput;
 	}
