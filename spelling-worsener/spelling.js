@@ -54,13 +54,12 @@ var replaceWord = function(word) {
 			input = input.replace('\u2019', "'");
 			isUnicodeApostrophe = true;
 		}
-
-		// s at end of string
+		
+		// replace 'ex' with 'x'
+		input = input.replace(/ex/g, 'x');
+		// replace s at end of string if doesn't end in -ss
 		if (/[^s/'/]s$/.test(input)) {
 			input = input.replace(/s$/, 'z');
-		}
-		else {
-			input = input.replace(/ex/g, 'x');
 		}
 
 		// put apostrophe back
