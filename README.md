@@ -1,6 +1,12 @@
 # Spelling Worsener
 This Chrome extension replaces some words with misspellings or grammatical errors and uses filters to edit other words; see the tables below to see how words are replaced.
 
+## Installation and how to use
+
+I currently don't have plans to submit this to the Chrome app store, so if you're ok with downloading this developer extension, installing it, and having Chrome remind you every time you load it about developer extensions, then clone/download this repo and follow the instructions [here](http://www.howtogeek.com/233355/how-to-install-extensions-from-outside-the-chrome-web-store-and-firefox-add-ons-gallery/) to install it.
+
+After you install it, look for the extension with the icon that looks like [this](spelling-worsener/no-grammar.png) and click it when you want to worsen a web page's spelling. Click it multiple times for more fun!
+
 ## What it does
 
 Some words are specifically searched for and replaced with a misspelling or grammatical error:
