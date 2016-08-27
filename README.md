@@ -47,7 +47,7 @@ If the word isn't one of the matches above, the word is run through the followin
 | Word contains 'ex' | 'ex' replaced with x | excel -> xcel |
 | Word ends with -s and not -ss | -s ending replaced with -z | his -> hiz |
 | Word over 7 characters long and has letter a followed by non-vowel | a's replaced with ah | travelled -> trahvelled |
-| Word over 7 characters long and has letter o followed by non-vowel | a's replaced with oh | computer -> cohmputer |
+| Word over 7 characters long and has letter o followed by non-vowel | o's replaced with oh | computer -> cohmputer |
 | Word over 7 characters long and ends with -ing | -ing ending replaced with -n | drizzling -> drizzln |
 
 Tip: If you click the extension's button multiple times on a web page you can get some words to become really long strings of 'a' or 'o' followed by lots of h's, or you'll get words that form a cycle, like it's -> its -> it's and so on.
