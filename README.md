@@ -7,6 +7,8 @@ I currently don't have plans to submit this to the Chrome app store, so if you'r
 
 After you install it, look for the extension with the icon that looks like [this](spelling-worsener/no-grammar.png) and click it when you want to worsen a web page's spelling. Click it multiple times for more fun!
 
+For more wackiness, try using this extension combined with my [word-scrambler extension.](https://github.com/m1c0l/word-scrambler)
+
 ## What it does
 
 Some words are specifically searched for and replaced with a misspelling or grammatical error:
