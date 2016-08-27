@@ -84,30 +84,34 @@ var replaceWord = function(word) {
 	return word;
 };
 
-var processNodeText = function(textNode) {
-	var ignoreTags = ['script', 'style'];
-	var parentElem = textNode.parentElement;
-	if (parentElem) {
-		var parentTag = parentElem.tagName.toLowerCase();
-		if (ignoreTags.indexOf(parentTag) !== -1) {
-			return;
-		}
-	}
-	var nodeValue = textNode.nodeValue;
-	if (!/[^\n\s]/.test(nodeValue)) {
+var processText = function(text) {
+	if (!/[^\n\s]/.test(text)) {
 		return;
 	}
-	var wordArray = nodeValue.split(/\s+/);
+	var wordArray = text.split(/\s+/);
 	for (var a in wordArray) {
 		wordArray[a] = replaceWord(wordArray[a]);
 	}
-	var editedWords = wordArray.join(' ');
-	textNode.nodeValue = editedWords;
+	return wordArray.join(' ');
 };
 
 var processBody = (function() {
 	var textNode, nodeIter = document.createNodeIterator(document.body, NodeFilter.SHOW_TEXT);
+	var ignoreTags = ['script', 'style'];
 	while ((textNode = nodeIter.nextNode())) {
-		processNodeText(textNode);
+		// Skip this text node if it's inside a tag we don't want to edit
+		var parentElem = textNode.parentElement;
+		if (parentElem) {
+			var parentTag = parentElem.tagName.toLowerCase();
+			if (ignoreTags.indexOf(parentTag) !== -1) {
+				continue;
+			}
+		}
+
+		textNode.nodeValue = processText(textNode.nodeValue);
 	}
+})();
+
+var processText = (function() {
+	document.title = processText(document.title);
 })();
